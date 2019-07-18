@@ -64,12 +64,13 @@ endif(GDAL_FOUND)
 ####
 ## Searching for CUDA
 ##############################
-if(NOT APPLE)
+option(WITH_CUDA "Compile with CUDA support" ON)
+if(NOT APPLE AND WITH_CUDA)
 find_package( CUDA 8)
 if(CUDA_FOUND)
     include_directories(${CUDA_INCLUDE_DIRS})
 endif(CUDA_FOUND)
-endif(NOT APPLE)
+endif(NOT APPLE AND WITH_CUDA)
 
 ####
 ## Searching for OpenCV
